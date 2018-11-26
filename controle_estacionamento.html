@@ -1,0 +1,56 @@
+<html>
+<head>
+<!-- Última versão CSS compilada e minificada -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Tema opcional -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Última versão JavaScript compilada e minificada -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+var lista=[];
+</script>
+</head>
+<body>
+<div class="jumbotron">
+<center>
+<h2>Controle de Estacionamento simples sem Banco de dados - HTML & JS</h2>
+
+<h5>Entrada - Placa</h5>
+<input type="text" id="placa" placeholder="Placa do Veículo">
+<input type="submit" onclick="entra()" value="Cadastrar Veículo"><br>
+<h5>Saida - Placa</h5>
+<input type="text" id="placaSai" placeholder="Placa do Veículo">
+<input type="submit" onclick="sai()" value="Veículo Liberado"><br>
+</center>
+</div>
+<div class="container">
+<h4>Estacionamento contém os seguintes carros:</h4>
+<p id="imprime"></p>
+</div>
+<script type="text/javascript">
+function entra(){
+var placa=document.getElementById('placa').value;
+lista.push(placa);
+document.getElementById("imprime").innerHTML="";
+for(var i=0;i<lista.length;i++){
+document.getElementById("imprime").innerHTML += lista[i]+"<br>";
+}
+}
+
+function sai(){
+var placaSai=document.getElementById('placaSai').value;
+var index=lista.indexOf(placaSai);
+if(index > -1){
+lista.splice(index, 1);
+}
+document.getElementById("imprime").innerHTML="";
+for(var i=0;i<lista.length;i++){
+document.getElementById("imprime").innerHTML += lista[i]+"<br>";
+}
+}
+</script>
+</body>
+</html>
